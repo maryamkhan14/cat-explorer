@@ -1,22 +1,18 @@
 import React from "react";
-import axios from "axios";
-const handleDiscoverClick = async (e) => {
-  e.preventDefault();
-  let { data } = await getCat();
-  console.log("cat: ", data);
-};
-const getCat = async () => {
-  return await axios({
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "https://api.thecatapi.com/v1/images/search?has_breeds=1",
-    headers: {
-      "x-api-key":
-        "live_oI1GpJbIyp8EEN9xKlduCRxeLfaJR3J40dlix5pdqQmPEmnKi08SjOpujYgD0LjP",
-    },
-  });
-};
+import { getCat } from "../services/getCat";
+import { CatExplorerContext } from "../context/CatExplorerContext";
+import { useContext } from "react";
+
 const Discover = () => {
+  const { banList, dispatch } = useContext(CatExplorerContext);
+  const handleDiscoverClick = async (e) => {
+    e.preventDefault();
+    updateCat();
+  };
+  const updateCat = async () => {
+    let data = await getCat(banList);
+    dispatch({ type: "UPDATE_CURRENT_CAT", payload: data });
+  };
   return (
     <div className="discover">
       <button type="submit" onClick={handleDiscoverClick}>

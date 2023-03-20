@@ -6,7 +6,8 @@ export const catExplorerReducer = (state, action) => {
     case "UPDATE_CURRENT_CAT":
       return { ...state, currentCat: action.payload };
     case "ADD_TO_BAN_LIST":
-      return { ...state, banList: [...state.banList, action.payload] };
+      let key = Object.keys(action.payload)[0];
+      return { ...state, key: [...state.banList[key], action.payload[key]] };
     case "REMOVE_FROM_BAN_LIST":
       return {
         ...state,
@@ -19,7 +20,7 @@ export const catExplorerReducer = (state, action) => {
 export const CatExplorerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(catExplorerReducer, {
     currentCat: {},
-    banList: [],
+    banList: { origin: ["United States"] },
   });
   return (
     <CatExplorerContext.Provider value={{ ...state, dispatch }}>
