@@ -1,4 +1,20 @@
 import axios from "axios";
+import { attributesToKeep } from "./attributesToKeep";
+
+const refineAttributes = (cat) => {
+  cat.breeds = Object.entries(...cat.breeds).reduce(
+    (accumulator, currentValue) => {
+      if (attributesToKeep.includes(currentValue[0])) {
+        return { ...accumulator, [currentValue[0]]: currentValue[1] };
+      } else {
+        return accumulator;
+      }
+    },
+    {}
+  );
+  return cat;
+};
+
 const fetchCat = async () => {
   let { data } = await axios({
     method: "get",
@@ -9,7 +25,7 @@ const fetchCat = async () => {
         "live_oI1GpJbIyp8EEN9xKlduCRxeLfaJR3J40dlix5pdqQmPEmnKi08SjOpujYgD0LjP",
     },
   });
-  return data[0];
+  return refineAttributes(data[0]);
 };
 
 const isValidCat = (catAttributes, banList) => {
@@ -23,8 +39,9 @@ const isValidCat = (catAttributes, banList) => {
 
 export const getCat = async (banList) => {
   let cat = await fetchCat();
-  while (!isValidCat(...cat.breeds, banList)) {
+  while (!isValidCat(cat.breeds, banList)) {
     cat = await fetchCat();
   }
+
   return cat;
 };
