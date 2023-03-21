@@ -1,5 +1,5 @@
 import axios from "axios";
-import { attributesToKeep } from "./attributesToKeep";
+import { attributesToKeep } from "./attributes";
 
 const refineAttributes = (cat) => {
   cat.breeds = Object.entries(...cat.breeds).reduce(

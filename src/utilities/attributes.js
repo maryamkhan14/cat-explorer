@@ -5,3 +5,5 @@ export const attributesToKeep = [
   "wikipedia_url",
   "rare",
 ];
+
+export const bannableAttributes = ["name", "origin", "rare"];
