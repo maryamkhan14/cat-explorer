@@ -20,7 +20,7 @@ export const catExplorerReducer = (state, action) => {
 export const CatExplorerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(catExplorerReducer, {
     currentCat: {},
-    banList: { origin: ["United States"] },
+    banList: {},
   });
   return (
     <CatExplorerContext.Provider value={{ ...state, dispatch }}>
