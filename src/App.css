@@ -1,42 +1,87 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex: 1 1 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-explorer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 60%;
+  margin: 1em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.attribute {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  background-color: lightblue;
+  margin: 5px 5px;
+  border-radius: 5px;
+  padding: 1em;
 }
 
-.card {
-  padding: 2em;
+.attribute.bannable:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition-duration: 500ms;
+  transition-property: box-shadow;
+  background-color: darkred;
+  color: white;
+  transition-duration: 500ms;
+  transition-property: background-color;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.attribute.description {
+  flex: 1 1 100%;
+  background-color: beige;
+}
+
+.attribute-value {
+  align-items: self-start;
+  width: auto;
+  padding: 5px;
+}
+
+.cat-image {
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: center;
+  margin: 5px;
 }

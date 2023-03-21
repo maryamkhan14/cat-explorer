@@ -1,14 +1,19 @@
 import React from "react";
 
-const Attribute = ({ attributeName, attributeValue }) => {
-  if (attributeName == "rare") {
-    attributeValue == 1
-      ? (attributeValue = "Rare")
-      : (attributeValue = "Not Rare");
-  }
+const Attribute = ({ attributeName, attributeValue, bannable }) => {
   return (
-    <div className="attribute">
-      <p className="attribute-value">{attributeValue}</p>
+    <div className={`attribute ${attributeName} ${bannable ? "bannable" : ""}`}>
+      <div>
+        <p className="attribute-value">
+          {attributeName == "wikipedia_url" ? (
+            <a href={attributeValue} target="_blank">
+              See the Wiki
+            </a>
+          ) : (
+            attributeValue
+          )}
+        </p>
+      </div>
     </div>
   );
 };
