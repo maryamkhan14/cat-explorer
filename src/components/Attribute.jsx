@@ -1,14 +1,24 @@
 import React from "react";
 import { useContext } from "react";
 import { CatExplorerContext } from "../context/CatExplorerContext";
-const Attribute = ({ attributeName, attributeValue, bannable }) => {
-  const { dispatch } = useContext(CatExplorerContext);
-  const handleAttributeClick = (e) => {
-    dispatch({
-      type: "ADD_TO_BAN_LIST",
-      payload: { attributeName: attributeValue },
-    });
+import { bannableAttributes } from "../utilities/attributes";
+import "./styling/Attribute.css";
+
+const Attribute = ({ attributeName }) => {
+  const { dispatch, currentCat } = useContext(CatExplorerContext);
+
+  const attribute = [attributeName, currentCat.breeds[attributeName]];
+  const bannable = bannableAttributes.includes(attributeName);
+
+  const handleAttributeClick = () => {
+    if (bannable) {
+      dispatch({
+        type: "ADD_TO_BAN_LIST",
+        payload: attribute,
+      });
+    }
   };
+
   return (
     <div
       className={`attribute ${attributeName} ${bannable ? "bannable" : ""}`}
@@ -17,11 +27,11 @@ const Attribute = ({ attributeName, attributeValue, bannable }) => {
       <div>
         <p className="attribute-value">
           {attributeName == "wikipedia_url" ? (
-            <a href={attributeValue} target="_blank">
+            <a href={attribute[1]} target="_blank">
               See the Wiki
             </a>
           ) : (
-            attributeValue
+            attribute[1]
           )}
         </p>
       </div>

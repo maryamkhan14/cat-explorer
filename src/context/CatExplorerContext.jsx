@@ -6,8 +6,24 @@ export const catExplorerReducer = (state, action) => {
     case "UPDATE_CURRENT_CAT":
       return { ...state, currentCat: action.payload };
     case "ADD_TO_BAN_LIST":
-      let key = Object.keys(action.payload)[0];
-      return { ...state, key: [...state.banList[key], action.payload[key]] };
+      let key = action.payload[0];
+      if (state.banList.hasOwnProperty(key)) {
+        return {
+          ...state,
+          banList: {
+            ...state.banList,
+            key: [...state.banList[key], action.payload[1]],
+          },
+        };
+      } else {
+        return {
+          ...state,
+          banList: {
+            ...state.banList,
+            [key]: [action.payload[1]],
+          },
+        };
+      }
     case "REMOVE_FROM_BAN_LIST":
       return {
         ...state,

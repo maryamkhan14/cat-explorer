@@ -1,0 +1,22 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em;
+}
+
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 60%;
+  margin: 1em;
+}
+
+.cat-image {
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: center;
+  margin: 5px;
+}

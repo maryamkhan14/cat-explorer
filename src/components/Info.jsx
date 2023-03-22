@@ -1,4 +1,5 @@
 import React from "react";
+import "./styling/Info.css";
 
 const Info = () => {
   return (
