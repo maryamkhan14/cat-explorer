@@ -14,9 +14,9 @@ const Results = () => {
         <Attribute attributeName="origin" key="origin" />
         <Attribute attributeName="rare" key="rare" />
         <Attribute attributeName="description" key="description" />
-        <div className="cat-image">
-          <img src={currentCat.url} />
-        </div>
+      </div>
+      <div className="cat-image">
+        <img src={currentCat.url} />
       </div>
     </div>
   );
