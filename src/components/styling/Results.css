@@ -20,3 +20,6 @@
   justify-content: center;
   margin: 5px;
 }
+.cat-image img {
+  max-width: 100%;
+}

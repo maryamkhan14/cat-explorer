@@ -15,7 +15,7 @@ const Results = () => {
         <Attribute attributeName="rare" key="rare" />
         <Attribute attributeName="description" key="description" />
         <div className="cat-image">
-          <img src={currentCat.url} width={500} />
+          <img src={currentCat.url} />
         </div>
       </div>
     </div>

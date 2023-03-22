@@ -4,8 +4,10 @@ import Info from "./Info";
 import { useContext } from "react";
 import { CatExplorerContext } from "../context/CatExplorerContext";
 import Results from "./Results";
+import "./styling/CatExplorerForm.css";
+
 const CatExplorerForm = () => {
-  const { currentCat, dispatch } = useContext(CatExplorerContext);
+  const { currentCat } = useContext(CatExplorerContext);
   return (
     <form className="cat-explorer-form">
       <Info />

@@ -13,10 +13,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.cat-explorer-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
