@@ -30,7 +30,7 @@ const fetchCat = async () => {
 
 const isValidCat = (catAttributes, banList) => {
   for (let banAttr of Object.keys(banList)) {
-    if (banList[banAttr].includes(catAttributes[banAttr])) {
+    if (banList[banAttr].has(catAttributes[banAttr])) {
       return false;
     }
   }

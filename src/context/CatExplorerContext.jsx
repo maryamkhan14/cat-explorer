@@ -8,11 +8,13 @@ export const catExplorerReducer = (state, action) => {
     case "ADD_TO_BAN_LIST":
       let key = action.payload[0];
       if (state.banList.hasOwnProperty(key)) {
+        let currentlyBannedVals = state.banList[key];
+        currentlyBannedVals.add(action.payload[1]);
         return {
           ...state,
           banList: {
             ...state.banList,
-            key: [...state.banList[key], action.payload[1]],
+            [key]: currentlyBannedVals,
           },
         };
       } else {
@@ -20,7 +22,7 @@ export const catExplorerReducer = (state, action) => {
           ...state,
           banList: {
             ...state.banList,
-            [key]: [action.payload[1]],
+            [key]: new Set([action.payload[1]]),
           },
         };
       }
@@ -28,6 +30,11 @@ export const catExplorerReducer = (state, action) => {
       return {
         ...state,
         banList: banList.filter((attr) => attr != action.payload),
+      };
+    case "TOGGLE_BAN_LIST":
+      return {
+        ...state,
+        banListVisible: !state.banListVisible,
       };
     default:
       return state;
@@ -37,6 +44,7 @@ export const CatExplorerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(catExplorerReducer, {
     currentCat: {},
     banList: {},
+    banListVisible: false,
   });
   return (
     <CatExplorerContext.Provider value={{ ...state, dispatch }}>

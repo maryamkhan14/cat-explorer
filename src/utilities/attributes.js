@@ -6,4 +6,4 @@ export const attributesToKeep = [
   "description",
 ];
 
-export const bannableAttributes = ["name", "origin", "rare"];
+export const bannableAttributes = ["name", "origin"];

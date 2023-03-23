@@ -1,0 +1,96 @@
+.ban-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ban-list {
+  display: flex;
+  width: 100%;
+  background-color: lightgray;
+}
+
+.ban-list.invisible {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  transition-duration: 500ms;
+  transition-property: height;
+}
+
+.ban-list.visible {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 10%;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 3em 1em;
+  line-height: 1.3em;
+}
+
+.ban-list.banned-attributes {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.attribute.banned {
+  flex: 0 1 auto;
+  background-color: darkred;
+  color: white;
+}
+
+.toggle-ban-list {
+  align-self: center;
+  background-color: #f9f9f9;
+  transform: translateY(-95%);
+  border: 1px solid #404aff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.toggle-ban-list.list-visible {
+  cursor: pointer;
+  transform: translateY(-90%);
+}
+
+.toggle-ban-list.list-invisible:hover {
+  background-color: #ececec;
+  transform: translateY(-100%);
+  transition-duration: 500ms;
+  transition-property: transform;
+}
+.toggle-ban-list.list-visible:hover {
+  background-color: #ececec;
+  transform: translateY(-105%);
+  transition-duration: 500ms;
+  transition-property: transform;
+}
+
+.toggle-ban-list.list-invisible button {
+  border: 0;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.toggle-ban-list.list-visible button {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  border-radius: 0;
+  background-color: transparent;
+}
